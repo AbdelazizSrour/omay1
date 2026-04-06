@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>OMAY IT</title>
+
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:Cairo;
+    background:#0a0a0a;
+    color:#fff;
+}
+
+/* ===== Header ===== */
+.header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(0,0,0,0.8);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:center;
+    padding:20px;
+    z-index:999;
+}
+
+.nav{
+    display:flex;
+    gap:40px;
+    align-items:center;
+}
+
+.nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:18px;
+    transition:.3s;
+}
+
+.nav a:hover{
+    color:#f5b400;
+    transform:scale(1.1);
+}
+
+/* ===== Hero ===== */
+.hero{
+    margin-top:90px;
+    height:60vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
+    url('https://images.unsplash.com/photo-1498050108023-c5249f4df085') center/cover;
+}
+
+.hero h1{
+    font-size:45px;
+}
+
+.hero span{
+    color:#f5b400;
+}
+
+/* ===== Services ===== */
+.section{
+    padding:80px 40px;
+    text-align:center;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.card{
+    background:#111;
+    border-radius:20px;
+    padding:25px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:
+        0 0 10px #f5b400,
+        0 0 30px rgba(245,180,0,0.4);
+}
+
+.card h3{
+    color:#f5b400;
+}
+
+.card p{
+    color:#aaa;
+}
+
+/* ===== Popup ===== */
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.popup-content{
+    background:#111;
+    padding:30px;
+    border-radius:15px;
+    width:300px;
+    text-align:center;
+}
+
+.close{
+    cursor:pointer;
+    float:left;
+    color:#f5b400;
+    font-size:20px;
+}
+
+.btn{
+    margin-top:15px;
+    padding:10px 20px;
+    border:2px solid #f5b400;
+    background:transparent;
+    color:#f5b400;
+    cursor:pointer;
+}
+
+/* ===== WhatsApp ===== */
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background:#25D366;
+    color:#fff;
+    padding:15px;
+    border-radius:50%;
+    text-decoration:none;
+}
+.header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(0,0,0,0.8);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:center; /* في النص */
+    align-items:center;
+    padding:20px;
+    z-index:999;
+}
+
+/* اللوجو */
+.header .logo img{
+    width:80px;
+}
+
+/* المنيو */
+.nav{
+    display:flex;
+    gap:40px;
+    align-items:center;
+}
+
+/* اللينكات */
+.nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:18px; /* كبرنا الخط */
+    position:relative;
+    transition:.3s;
+}
+
+/* Hover تأثير احترافي */
+.nav a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    background:#f5b400;
+    bottom:-5px;
+    right:0;
+    transition:.3s;
+}
+
+.nav a:hover{
+    color:#f5b400;
+    transform:scale(1.1);
+}
+
+.nav a:hover::after{
+    width:100%;
+    left:0;
+}
+
+/* مسافة عشان الهيدر */
+.hero{
+    margin-top:90px;
+}
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+    .nav{
+        flex-direction:column;
+        gap:15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="header">
+
+    <nav class="nav">
+
+        <a href="index.html">الرئيسية</a>
+        <a href="landing.html">خدمات محاسبية</a>
+
+        <!-- اللوجو في النص -->
+        <div class="logo">
+            <img src="images/logo.png" alt="logo">
+        </div>
+
+        <a href="#">عملاؤنا</a>
+        <a href="https://wa.me/201096510474">تواصل</a>
+
+    </nav>
+
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div data-aos="fade-up">
+        <h1>OMAY <span>IT</span></h1>
+        <p>تصميم مواقع احترافية + تعليم البرمجة من الصفر للاحتراف</p>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="section">
+    <h2 data-aos="fade-up">ماذا نقدم؟</h2>
+    <div class="cards" id="servicesContainer"></div>
+</section>
+
+<!-- Popup -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span onclick="closePopup()" class="close">&times;</span>
+        <h2 id="popupTitle"></h2>
+        <p id="popupDesc"></p>
+        <button class="btn" onclick="openChoosePopup()">احجز الآن</button>
+    </div>
+</div>
+<div id="choosePopup" class="popup">
+    <div class="popup-content">
+        <span onclick="closeChoosePopup()" class="close">&times;</span>
+        <h3>اختار تبعت لمين 👇</h3>
+
+        <button class="btn" onclick="sendWhatsApp('201065104704')">
+            👨‍💻 مهندس محمد المنياوي
+        </button>
+
+        <button class="btn" onclick="sendWhatsApp('201096510474')">
+            👨‍💻 مهندس عمر زهران
+        </button>
+    </div>
+</div>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/201096510474" class="whatsapp">💬</a>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:1000});
+
+// ✅ تخزين الخدمة المختارة
+let selectedService = "";
+
+// الخدمات
+let services = [
+    {title:"تصميم مواقع شركات", desc:"موقع احترافي يعكس قوة شركتك ويزود عملاءك"},
+    {title:"تطوير مواقع ديناميكية", desc:"برمجة مواقع متكاملة بأحدث التقنيات"},
+    {title:"تصميم UI/UX", desc:"واجهات جذابة وسهلة الاستخدام"},
+    {title:"Landing Pages", desc:"صفحات بيع عالية التحويل"},
+    {title:"تحسين سرعة الموقع", desc:"تسريع موقعك لنتائج أفضل"},
+    {title:"ربط API", desc:"ربط الموقع بأنظمة خارجية"},
+    {title:"كورس Front-End", desc:"HTML + CSS + JS من الصفر"},
+    {title:"كورس Back-End", desc:"تعلم السيرفر وقواعد البيانات"},
+    {title:"كورس Full Stack", desc:"خليك مطور متكامل"},
+    {title:"كورس UI/UX", desc:"اتعلم تصميم واجهات احترافية"},
+    {title:"تدريب عملي", desc:"مشاريع حقيقية لسوق العمل"},
+    {title:"استشارات تقنية", desc:"نساعدك تبني مشروعك صح"}
+];
+
+// عرض الخدمات
+let container = document.getElementById("servicesContainer");
+
+services.forEach((s,i)=>{
+    let div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = `<h3>${s.title}</h3><p>${s.desc}</p>`;
+
+    div.onclick = ()=> openPopup(s);
+
+    container.appendChild(div);
+
+    setTimeout(()=>{
+        div.style.opacity="1";
+        div.style.transform="translateY(0)";
+    }, i*100);
+});
+
+// Popup
+function openPopup(s){
+    selectedService = s.title;
+
+    document.getElementById("popupTitle").innerText = s.title;
+    document.getElementById("popupDesc").innerText = s.desc;
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+
+// حجز واتساب
+function bookNow(){
+
+    if(selectedService === ""){
+        alert("اختار خدمة الأول 👀");
+        return;
+    }
+
+    let message = `السلام عليكم 👋
+عاوز استفسر عن خدمة: ${selectedService}
+
+ممكن تفاصيل أكتر؟`;
+
+    let phone = "201096510474";
+
+    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+}
+
+// قفل popup
+window.onclick = function(e){
+    if(e.target.id === "popup"){
+        closePopup();
+    }
+}
+</script>
+<script>
+    function openChoosePopup(){
+    document.getElementById("choosePopup").style.display = "flex";
+}
+
+function closeChoosePopup(){
+    document.getElementById("choosePopup").style.display = "none";
+}
+
+function sendWhatsApp(phone){
+
+    if(selectedService === ""){
+        alert("اختار خدمة الأول 👀");
+        return;
+    }
+
+    let message = `السلام عليكم 👋
+عاوز احجز خدمة: ${selectedService}
+
+ممكن تفاصيل أكتر؟`;
+
+    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+}
+</script>
+</body>
+</html>
